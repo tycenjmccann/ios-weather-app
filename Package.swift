@@ -3,12 +3,36 @@ import PackageDescription
 
 let package = Package(
     name: "WeatherApp",
-    platforms: [.iOS(.v18)],
+    platforms: [
+        .iOS(.v17)
+    ],
     products: [
-        .library(name: "WeatherFeature", targets: ["WeatherFeature"]),
+        .library(
+            name: "WeatherApp",
+            targets: ["WeatherApp"]
+        ),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.10.0")
     ],
     targets: [
-        .target(name: "WeatherFeature", path: "Sources/WeatherFeature"),
-        .testTarget(name: "WeatherFeatureTests", dependencies: ["WeatherFeature"], path: "Tests/WeatherFeatureTests"),
+        .target(
+            name: "WeatherApp",
+            path: "Sources",
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
+            ]
+        ),
+        .testTarget(
+            name: "WeatherAppTests",
+            dependencies: [
+                "WeatherApp",
+                .product(name: "Testing", package: "swift-testing")
+            ],
+            path: "Tests",
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
+            ]
+        )
     ]
 )
