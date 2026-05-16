@@ -1,0 +1,53 @@
+{
+  "name": "weather-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Weather API backend service for iOS weather app",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run tests/integration.test.ts",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy",
+    "deploy:prod": "cdk deploy --require-approval never",
+    "destroy": "cdk destroy"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.515.0",
+    "@middy/core": "^5.2.0",
+    "@middy/http-error-handler": "^5.2.0",
+    "node-cache": "^5.1.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.133",
+    "@types/node": "^20.11.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vitest/coverage-v8": "^1.2.1",
+    "aws-cdk": "^2.120.0",
+    "aws-cdk-lib": "^2.120.0",
+    "constructs": "^10.3.0",
+    "esbuild": "^0.19.12",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "weather",
+    "api",
+    "lambda",
+    "aws",
+    "typescript",
+    "backend"
+  ],
+  "author": "",
+  "license": "MIT"
+}
