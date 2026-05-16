@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- 
+        Location Permission Configuration
+        Required for CoreLocation to access user's location
+    -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to show weather conditions for your area.</string>
+    
+    <!-- 
+        Optional: Background Location (if you add background weather updates)
+        Not currently required but included for future enhancement
+    -->
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Allow weather updates in the background to keep you informed of changing conditions.</string>
+    
+    <!--
+        App Transport Security
+        If your backend API doesn't use HTTPS, configure exception domains
+        IMPORTANT: Production apps should always use HTTPS
+    -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <!-- For development/testing only - remove in production -->
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+        
+        <!-- Specific domain exceptions (replace with your actual domain) -->
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>api.example.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <false/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
+    
+    <!--
+        Privacy - Location Usage
+        Shows in Settings > Privacy > Location Services
+    -->
+    <key>NSLocationUsageDescription</key>
+    <string>This app needs location access to display weather for your current location.</string>
+</dict>
+</plist>
