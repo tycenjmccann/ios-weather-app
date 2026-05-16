@@ -25,16 +25,16 @@ jobs:
 
       - name: Build for iOS Simulator
         run: |
-          swift build \
-            -Xswiftc -sdk \
-            -Xswiftc $(xcrun --sdk iphonesimulator --show-sdk-path) \
-            -Xswiftc -target \
-            -Xswiftc arm64-apple-ios18.0-simulator
+          xcodebuild build \
+            -scheme WeatherFeature \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Run tests
         run: |
-          swift test \
-            -Xswiftc -sdk \
-            -Xswiftc $(xcrun --sdk iphonesimulator --show-sdk-path) \
-            -Xswiftc -target \
-            -Xswiftc arm64-apple-ios18.0-simulator
+          xcodebuild test \
+            -scheme WeatherFeatureTests \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO
